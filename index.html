@@ -2,72 +2,1547 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080b12">
-<title>Admission Radar — 2027/2028</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07090d">
+<meta name="description" content="Admission Radar — a 2027/2028 undergraduate science admissions tracker with Bengaluru priority.">
+<title>Admission Radar — 2027/2028 Science Admissions</title>
 <style>
-:root{color-scheme:dark;--bg:#080b12;--panel:#111824;--line:#293548;--text:#f4f7fb;--muted:#a1aec0;--mint:#8bf0c8;--amber:#ffd17b}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0,#1b3040 0,transparent 40%),var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{width:min(1160px,calc(100% - 32px));margin:auto}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}.brand{font-weight:900;letter-spacing:-.04em}.brand span,.hero em{color:var(--mint)}.verified{color:var(--muted);font-size:.82rem}.hero{padding:62px 0 34px}.eyebrow{color:var(--mint);font-size:.75rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase}.hero h1{font-size:clamp(2.8rem,8vw,6.5rem);line-height:.92;letter-spacing:-.075em;margin:18px 0}.hero em{font-style:normal}.hero p{color:var(--muted);max-width:660px;font-size:1.05rem}.filters{display:grid;grid-template-columns:2fr repeat(3,minmax(120px,1fr));gap:12px;background:#101622e8;border:1px solid var(--line);border-radius:20px;padding:17px}input,select{width:100%;background:#090f19;color:var(--text);border:1px solid #303c50;border-radius:11px;padding:13px;font:inherit;min-width:0}input:focus,select:focus{outline:2px solid var(--mint)}.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 28px}.tab{border:1px solid var(--line);background:transparent;color:var(--muted);padding:10px 15px;border-radius:999px;font:inherit;font-weight:700;cursor:pointer}.tab.active{background:var(--mint);color:#082017;border-color:var(--mint)}.results-head{display:flex;justify-content:space-between;align-items:center;margin:20px 0}.results-head h2{margin:0;font-size:1.25rem}.count{color:var(--muted);font-size:.9rem}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:linear-gradient(145deg,#151f2e,var(--panel));border:1px solid var(--line);border-radius:19px;padding:20px;display:flex;flex-direction:column;min-height:260px}.card-top{display:flex;justify-content:space-between;align-items:center}.badge{font-size:.7rem;font-weight:900;letter-spacing:.1em;padding:6px 9px;border-radius:7px}.OPEN{background:#143a2e;color:var(--mint)}.WATCH{background:#3b2c15;color:var(--amber)}.year{color:var(--muted);font-size:.82rem}.card h3{font-size:1.3rem;line-height:1.2;letter-spacing:-.03em;margin:19px 0 7px}.programmes,.notes{color:var(--muted);margin:0 0 15px}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;margin-bottom:15px}.chip{font-size:.75rem;background:#202b3b;color:#d0d9e6;border-radius:7px;padding:5px 8px}.actions{display:flex;gap:8px}.btn{flex:1;text-align:center;text-decoration:none;border:1px solid #3a4960;border-radius:10px;padding:10px 8px;font-size:.82rem;font-weight:800}.btn.primary{background:var(--mint);color:#082017;border-color:var(--mint)}.btn.disabled{opacity:.45;pointer-events:none}.empty{grid-column:1/-1;text-align:center;padding:38px;border:1px dashed #354157;border-radius:18px;color:var(--muted)}.info{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:42px 0 25px}.info article{background:#0e1420;border:1px solid var(--line);border-radius:17px;padding:21px}.info h3{margin:0 0 8px}.info p{margin:0;color:var(--muted)}footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:24px 0 38px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
-@media(max-width:850px){.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.filters .search{grid-column:1/-1}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:580px){.wrap{width:calc(100% - 24px)}.top{align-items:flex-start;flex-direction:column}.hero{padding:44px 0 28px}.filters,.cards,.info{grid-template-columns:1fr}.filters .search{grid-column:auto}.card{min-height:0}.results-head{align-items:flex-start;gap:8px;flex-direction:column}}
+:root{--bg:#07090d;--panel:#0f131a;--panel2:#131923;--line:#252c37;--text:#f4f7fb;--muted:#9ba7b7;--accent:#d9ff5b;--open:#b8ffcf;--openbg:#10251a;--watch:#ffe3a3;--watchbg:#241d0d;--shadow:0 18px 50px rgba(0,0,0,.28)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% -10%,#1a222f 0,#07090d 35%),#07090d;color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+header{padding:56px 0 30px;border-bottom:1px solid var(--line)}.eyebrow{font-size:12px;letter-spacing:.18em;font-weight:800;color:var(--accent)}h1{font-size:clamp(48px,8vw,92px);line-height:.9;letter-spacing:-.06em;margin:12px 0 20px;max-width:850px}h1 span{display:block;color:#fff}.hero-copy{max-width:680px;color:var(--muted);font-size:17px}.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.pill{border:1px solid var(--line);background:#0c1016;border-radius:999px;padding:7px 11px;color:#c8d1dd;font-size:12px}
+.toolbar{position:sticky;top:0;z-index:10;background:rgba(7,9,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:14px 0}.controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:10px}.control{width:100%;background:var(--panel);border:1px solid var(--line);color:var(--text);padding:12px 13px;border-radius:11px;outline:none}.control:focus{border-color:#596676}.tabs{display:flex;gap:8px;overflow:auto;margin-top:10px}.tab{white-space:nowrap;border:1px solid var(--line);background:transparent;color:var(--muted);padding:9px 13px;border-radius:10px;cursor:pointer}.tab.active{background:#eef4ff;color:#07090d;border-color:#eef4ff;font-weight:800}
+main{padding:30px 0 70px}.summary{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:18px}.summary strong{font-size:16px}.legend{color:var(--muted);font-size:12px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:17px;padding:19px;box-shadow:var(--shadow);min-width:0}.topline{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.name{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.15}.status{font-size:10px;letter-spacing:.1em;font-weight:900;border-radius:999px;padding:6px 8px;flex:none}.status.open{color:var(--open);background:var(--openbg);border:1px solid #1f5533}.status.watch{color:var(--watch);background:var(--watchbg);border:1px solid #5d491e}.place{color:var(--muted);font-size:12px;margin:7px 0 15px}.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}.tag{font-size:11px;border:1px solid var(--line);background:#0a0d12;color:#cbd4df;padding:5px 7px;border-radius:7px}.exam{font-size:12px;color:#d8e0ea;margin-bottom:10px}.exam b{color:#fff}.notes{color:var(--muted);font-size:12px;min-height:55px}.verified{color:#7f8b9a;font-size:11px;margin:13px 0}.actions{display:flex;gap:8px}.btn{flex:1;text-align:center;text-decoration:none;border-radius:9px;padding:9px 8px;border:1px solid var(--line);background:#0b0f15;font-size:11px;font-weight:800}.btn.primary{background:#eef4ff;color:#07090d;border-color:#eef4ff}.empty{border:1px dashed #39414d;border-radius:15px;padding:50px;text-align:center;color:var(--muted);grid-column:1/-1}
+.info{margin-top:28px;border:1px solid var(--line);border-radius:16px;background:#0c1016;padding:18px}.info h2{font-size:14px;margin:0 0 9px}.info p{margin:5px 0;color:var(--muted);font-size:12px}.info b{color:#fff}
+footer{border-top:1px solid var(--line);padding:25px 0 45px;color:#697586;font-size:11px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.controls{grid-template-columns:1fr 1fr}.controls .search{grid-column:1/-1}}
+@media(max-width:620px){.wrap{width:min(100% - 20px,1180px)}header{padding-top:36px}.grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.summary{align-items:flex-start;flex-direction:column}.actions{flex-direction:column}.btn{width:100%}h1{font-size:54px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header class="top"><div class="brand">◉ ADMISSION <span>RADAR</span></div><div class="verified">DATA LAST VERIFIED · <strong>22 SEP 2026</strong></div></header>
-<main>
-<section class="hero"><div class="eyebrow">Your 2027 / 2028 admissions dashboard</div><h1>DON’T MISS<br><em>THE FORM.</em></h1><p>Track application windows, entrance exams, and official admission portals in one place. Filter the list to find what matters to you.</p></section>
-<section aria-label="Admissions filters">
-<div class="filters">
-<input class="search" id="search" type="search" placeholder="Search colleges, programmes, cities…" aria-label="Search">
-<select id="year" aria-label="Year"><option value="all">All years</option><option value="2027">2027</option><option value="2028">2028</option></select>
-<select id="stream" aria-label="Stream"><option value="all">All science</option><option value="PCM">PCM</option><option value="PCB">PCB</option><option value="PCMB">PCMB</option></select>
-<select id="status" aria-label="Status"><option value="all">All statuses</option><option value="OPEN">OPEN</option><option value="WATCH">WATCH</option></select>
-</div>
-<nav class="tabs" aria-label="Category tabs"><button class="tab active" data-tab="Everything">Everything</button><button class="tab" data-tab="Bengaluru">Bengaluru</button><button class="tab" data-tab="Outside Bengaluru">Outside Bengaluru</button><button class="tab" data-tab="Entrance Exam">Entrance exams</button></nav>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">ADMISSION RADAR · 2027 / 2028</div>
+    <h1>DON'T MISS<span>THE FORM.</span></h1>
+    <p class="hero-copy">A practical undergraduate admissions tracker for Class 12 Science students — Bengaluru first, then major national engineering, science and research options.</p>
+    <div class="hero-meta">
+      <span class="pill">Bengaluru priority</span>
+      <span class="pill">Engineering + pure science</span>
+      <span class="pill">Official links</span>
+      <span class="pill">Verified 22 Sep 2026</span>
+    </div>
+  </div>
+</header>
+
+<section class="toolbar">
+  <div class="wrap">
+    <div class="controls">
+      <input id="search" class="control search" type="search" placeholder="Search college, course, exam…">
+      <select id="year" class="control" aria-label="Year">
+        <option value="all">Year · 2027 + 2028</option><option value="2027">2027</option><option value="2028">2028</option>
+      </select>
+      <select id="stream" class="control" aria-label="Stream">
+        <option value="all">Stream · All Science</option><option value="PCM">PCM</option><option value="PCB">PCB</option><option value="PCMB">PCMB</option>
+      </select>
+      <select id="status" class="control" aria-label="Status">
+        <option value="all">Status · All</option><option value="OPEN">OPEN</option><option value="WATCH">WATCH</option>
+      </select>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Admission category">
+      <button class="tab active" data-tab="Everything">Everything</button>
+      <button class="tab" data-tab="Bengaluru">Bengaluru</button>
+      <button class="tab" data-tab="Outside Bengaluru">Outside Bengaluru</button>
+      <button class="tab" data-tab="Entrance Exams">Entrance Exams</button>
+    </div>
+  </div>
 </section>
-<div class="results-head"><h2>Admissions radar</h2><div class="count" id="count" aria-live="polite"></div></div>
-<section class="cards" id="cards" aria-live="polite"></section>
-<section class="info">
-<article><h3><span style="color:var(--mint)">● OPEN</span> — Application available</h3><p>The tracker indicates an application or registration is open. Confirm deadlines, eligibility, and requirements on the official portal.</p></article>
-<article><h3><span style="color:var(--amber)">● WATCH</span> — Monitor updates</h3><p>Watch the official source for notifications, dates, and application links. WATCH does not mean applications are open.</p></article>
-</section>
+
+<main class="wrap">
+  <div class="summary">
+    <strong id="count">0 entries</strong>
+    <div class="legend">OPEN = verified official registration page · WATCH = relevant, but 2027 opening not verified</div>
+  </div>
+  <section id="grid" class="grid" aria-live="polite"></section>
+  <section class="info">
+    <h2>How to read the tracker</h2>
+    <p><b>OPEN:</b> The current dataset has an official application/registration page verified as open.</p>
+    <p><b>WATCH:</b> The institution/exam is relevant to the selected cycle, but the 2027 application has not been verified as open.</p>
+    <p><b>Important:</b> Always confirm the exact programme, eligibility, accepted entrance route and deadline on the official application page before submitting.</p>
+  </section>
 </main>
-<footer><span>Admission Radar · 2027/2028</span><span>Always confirm details with official sources.</span></footer>
-</div>
+
+<footer><div class="wrap">Admission Radar · Static, self-contained tracker · Data verified 2026-09-22 · Always defer to the official institution/exam website for final admission information.</div></footer>
+
 <script>
-"use strict";
-// Embedded data: the college cards do not use fetch() or external JSON.
 const DATA = [
-{id:"pes-btech",name:"PES University",programmes:["B.Tech"],year:"2027",status:"OPEN",city:"Bengaluru",category:"College",streams:["PCM","PCMB"],application:"https://admissions.pes.edu/registration/",source:"https://pes.edu/",notes:"Official portal shows Admissions 2027 and B.Tech registration using JEE Main 2027/KCET 2027."},
-{id:"pes-other",name:"PES University",programmes:["B.Sc","B.Pharm","BCA","B.Des","BBA","B.Com","B.Sc. Hons"],year:"2027",status:"OPEN",city:"Bengaluru",category:"College",streams:["PCM","PCB","PCMB"],application:"https://admissions.pes.edu/registration/",source:"https://pes.edu/",notes:"Check the official portal for programme-specific eligibility and dates."},
-{id:"mahe",name:"MAHE Bengaluru",programmes:["B.Tech","B.Pharm","BBA","B.Des"],year:"2027",status:"WATCH",city:"Bengaluru",category:"College",streams:["PCM","PCB","PCMB"],application:"",source:"https://manipal.edu/",notes:"Watch the official admissions website for Bengaluru programme announcements."},
-{id:"rit",name:"Ramaiah Institute of Technology",programmes:["B.E."],year:"2027",status:"WATCH",city:"Bengaluru",category:"College",streams:["PCM","PCMB"],application:"",source:"https://www.msrit.edu/",notes:"Watch official institute and relevant entrance/counselling updates."},
-{id:"christ",name:"CHRIST University",programmes:["B.Tech","B.Sc"],year:"2027",status:"WATCH",city:"Bengaluru",category:"College",streams:["PCM","PCB","PCMB"],application:"",source:"https://christuniversity.in/",notes:"Monitor the official admissions site for programme-specific dates."},
-{id:"iisc",name:"IISc Bengaluru",programmes:["BS (Research)"],year:"2027",status:"WATCH",city:"Bengaluru",category:"College",streams:["PCM","PCMB"],application:"",source:"https://www.iisc.ac.in/",notes:"Watch official IISc admissions announcements and eligibility details."},
-{id:"bits",name:"BITS Pilani",programmes:["B.E.","M.Sc.","B.Pharm."],year:"2027",status:"WATCH",city:"Outside Bengaluru",category:"College",streams:["PCM","PCB","PCMB"],application:"",source:"https://www.bitsadmission.com/",notes:"Monitor the official BITS admissions portal for 2027 updates."},
-{id:"iisers",name:"IISERs",programmes:["BS-MS","BS","B.Tech"],year:"2027",status:"WATCH",city:"Outside Bengaluru",category:"College",streams:["PCM","PCB","PCMB"],application:"",source:"https://www.iiseradmission.in/",notes:"Watch the official IISER admissions portal for the 2027 process."},
-{id:"niser-cebs",name:"NISER / UM-DAE CEBS",programmes:["5-year Integrated M.Sc."],year:"2027",status:"WATCH",city:"Outside Bengaluru",category:"College",streams:["PCM","PCB","PCMB"],application:"",source:"https://www.niser.ac.in/",notes:"Monitor official NISER and CEBS admission announcements."},
-{id:"comedk",name:"COMEDK UGET",programmes:["Entrance examination"],year:"2027",status:"WATCH",city:"Outside Bengaluru",category:"Entrance Exam",streams:["PCM","PCMB"],application:"",source:"https://www.comedk.org/",notes:"Watch for the 2027 examination notification, schedule, and application window."},
-{id:"kcet",name:"KCET / KEA",programmes:["Entrance examination"],year:"2027",status:"WATCH",city:"Bengaluru",category:"Entrance Exam",streams:["PCM","PCB","PCMB"],application:"",source:"https://cetonline.karnataka.gov.in/kea/",notes:"Watch for the 2027 KEA notification, eligibility, and schedule."}
+  {
+    "name": "PES University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "OPEN",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.Tech"
+    ],
+    "exam": "JEE Main / KCET",
+    "apply": "https://admissions.pes.edu/registration/",
+    "source": "https://pes.edu/",
+    "notes": "Admissions 2027 registration is live; PESU states B.Tech admissions use JEE Main 2027 and KCET 2027.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "PES University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "OPEN",
+    "streams": [],
+    "programs": [
+      "B.Sc",
+      "B.Pharm",
+      "BCA",
+      "B.Des",
+      "BBA",
+      "B.Com",
+      "B.Sc. Hons"
+    ],
+    "exam": "University process",
+    "apply": "https://admissions.pes.edu/registration/",
+    "source": "https://pes.edu/",
+    "notes": "Official PESU admissions site lists Admissions 2027 and registrations for these undergraduate programmes; confirm programme-specific eligibility.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "RV University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Tech",
+      "B.Sc",
+      "BCA",
+      "BBA"
+    ],
+    "exam": "University selection process",
+    "apply": "https://rvu.edu.in/admissions/",
+    "source": "https://rvu.edu.in/admissions/",
+    "notes": "2027 application opening has not been verified on the official site.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "RV College of Engineering",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK / other official routes",
+    "apply": "https://rvce.edu.in/",
+    "source": "https://rvce.edu.in/",
+    "notes": "2027 admission dates and route details are not yet published on the official site.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "B.M.S. College of Engineering",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK",
+    "apply": "https://www.bmsce.ac.in/",
+    "source": "https://www.bmsce.ac.in/home/Under-Graduation",
+    "notes": "Official undergraduate page documents B.E. programmes and current admission routes; 2027 dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "BMS Institute of Technology & Management",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK",
+    "apply": "https://www.bmsit.ac.in/",
+    "source": "https://www.bmsit.ac.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Ramaiah Institute of Technology",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK / other official routes",
+    "apply": "https://www.msrit.edu/",
+    "source": "https://www.msrit.edu/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "MS Ramaiah University of Applied Sciences",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Tech",
+      "B.Sc"
+    ],
+    "exam": "University admission process",
+    "apply": "https://www.msruas.ac.in/",
+    "source": "https://www.msruas.ac.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Dayananda Sagar University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Tech",
+      "B.Sc"
+    ],
+    "exam": "University admission process",
+    "apply": "https://www.dsu.edu.in/",
+    "source": "https://www.dsu.edu.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Dayananda Sagar College of Engineering",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK",
+    "apply": "https://www.dsce.edu.in/",
+    "source": "https://www.dsce.edu.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "CHRIST University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Tech",
+      "B.Sc"
+    ],
+    "exam": "University selection process",
+    "apply": "https://christuniversity.in/admission",
+    "source": "https://christuniversity.in/",
+    "notes": "2027 application opening has not been verified; check the official programme page for exact eligibility.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "MAHE Bengaluru",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Tech",
+      "B.Pharm",
+      "BBA",
+      "B.Des"
+    ],
+    "exam": "MET / programme-specific routes",
+    "apply": "https://www.manipal.edu/mu/admission.html",
+    "source": "https://www.manipal.edu/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Jain University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Tech",
+      "B.Sc",
+      "BCA",
+      "BBA"
+    ],
+    "exam": "JAIN entrance / programme-specific routes",
+    "apply": "https://www.jainuniversity.ac.in/admissions/",
+    "source": "https://www.jainuniversity.ac.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "CMR University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Tech",
+      "B.Sc",
+      "BCA"
+    ],
+    "exam": "University admission process",
+    "apply": "https://www.cmr.edu.in/admissions/",
+    "source": "https://www.cmr.edu.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "CMR Institute of Technology",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK",
+    "apply": "https://www.cmrit.ac.in/",
+    "source": "https://www.cmrit.ac.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "REVA University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Tech",
+      "B.Sc"
+    ],
+    "exam": "REVA selection / accepted entrance routes",
+    "apply": "https://www.reva.edu.in/admissions",
+    "source": "https://www.reva.edu.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Presidency University Bengaluru",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Tech",
+      "B.Sc"
+    ],
+    "exam": "University admission process",
+    "apply": "https://presidencyuniversity.in/admissions",
+    "source": "https://presidencyuniversity.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Alliance University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Tech",
+      "B.Sc"
+    ],
+    "exam": "University admission process",
+    "apply": "https://www.alliance.edu.in/admissions",
+    "source": "https://www.alliance.edu.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "New Horizon College of Engineering",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK",
+    "apply": "https://newhorizonindia.edu/nhengineering/",
+    "source": "https://newhorizonindia.edu/nhengineering/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Bangalore Institute of Technology",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK",
+    "apply": "https://bit-bangalore.edu.in/",
+    "source": "https://bit-bangalore.edu.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Nitte Meenakshi Institute of Technology",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK",
+    "apply": "https://www.nmit.ac.in/",
+    "source": "https://www.nmit.ac.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Acharya Institute of Technology",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK",
+    "apply": "https://www.acharya.ac.in/",
+    "source": "https://www.acharya.ac.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Sir M. Visvesvaraya Institute of Technology",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK",
+    "apply": "https://www.sirmvit.edu/",
+    "source": "https://www.sirmvit.edu/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "RNS Institute of Technology",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK",
+    "apply": "https://www.rnsit.ac.in/",
+    "source": "https://www.rnsit.ac.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "R.V. Institute of Technology and Management",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK",
+    "apply": "https://www.rvitm.edu.in/",
+    "source": "https://www.rvitm.edu.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Azim Premji University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Sc"
+    ],
+    "exam": "University selection process",
+    "apply": "https://azimpremjiuniversity.edu.in/programmes/undergraduate-programmes",
+    "source": "https://azimpremjiuniversity.edu.in/",
+    "notes": "2027 application dates and exact science-programme eligibility are not yet verified.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "St. Joseph's University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Sc"
+    ],
+    "exam": "University selection process",
+    "apply": "https://sju.edu.in/admissions",
+    "source": "https://sju.edu.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Mount Carmel College",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Sc"
+    ],
+    "exam": "College admission process",
+    "apply": "https://mccblr.edu.in/admissions/",
+    "source": "https://mccblr.edu.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Kristu Jayanti University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Sc",
+      "BCA"
+    ],
+    "exam": "University selection process",
+    "apply": "https://kristujayanti.edu.in/admission/",
+    "source": "https://kristujayanti.edu.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "The Oxford College of Engineering",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E."
+    ],
+    "exam": "KCET / COMEDK",
+    "apply": "https://theoxford.edu/engineering/",
+    "source": "https://theoxford.edu/engineering/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Garden City University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Sc",
+      "BCA",
+      "B.Tech"
+    ],
+    "exam": "University admission process",
+    "apply": "https://www.gardencity.university/",
+    "source": "https://www.gardencity.university/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Presidency College Bengaluru",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Sc",
+      "BCA"
+    ],
+    "exam": "University/college admission process",
+    "apply": "https://presidencycollege.ac.in/",
+    "source": "https://presidencycollege.ac.in/",
+    "notes": "2027 application dates not announced; verify the programme and awarding institution before applying.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "IISc Bengaluru — BS (Research)",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "BS (Research)"
+    ],
+    "exam": "JEE Advanced / IAT / other official channels",
+    "apply": "https://bs-ug.iisc.ac.in/admissions/",
+    "source": "https://bs-ug.iisc.ac.in/admissions/news-and-updates",
+    "notes": "IISc's official 2026 cycle is closed; 2027 application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "CHRIST University — B.Sc",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Sc"
+    ],
+    "exam": "CHRIST selection process",
+    "apply": "https://christuniversity.in/admission",
+    "source": "https://christuniversity.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Jain University — B.Sc",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Sc"
+    ],
+    "exam": "JAIN selection process",
+    "apply": "https://www.jainuniversity.ac.in/admissions/",
+    "source": "https://www.jainuniversity.ac.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "St. Joseph's University — B.Sc",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Sc"
+    ],
+    "exam": "University selection process",
+    "apply": "https://sju.edu.in/admissions",
+    "source": "https://sju.edu.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Mount Carmel College — B.Sc",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Sc"
+    ],
+    "exam": "College admission process",
+    "apply": "https://mccblr.edu.in/admissions/",
+    "source": "https://mccblr.edu.in/",
+    "notes": "2027 application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "BITS Pilani",
+    "city": "Pilani / Goa / Hyderabad",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E.",
+      "M.Sc.",
+      "B.Pharm."
+    ],
+    "exam": "BITSAT",
+    "apply": "https://www.bitsadmission.com/",
+    "source": "https://www.bitsadmission.com/",
+    "notes": "The official site currently shows the 2026 cycle closed; 2027 dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "IIIT Hyderabad",
+    "city": "Hyderabad",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM"
+    ],
+    "programs": [
+      "B.Tech"
+    ],
+    "exam": "UGEE / JEE Main / other official routes",
+    "apply": "https://ugadmissions.iiit.ac.in/",
+    "source": "https://www.iiit.ac.in/",
+    "notes": "2027 application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "IIIT Delhi",
+    "city": "New Delhi",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM"
+    ],
+    "programs": [
+      "B.Tech"
+    ],
+    "exam": "JEE Main / institute process",
+    "apply": "https://iiitd.ac.in/admission/",
+    "source": "https://iiitd.ac.in/",
+    "notes": "2027 application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "IIIT Bangalore",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM"
+    ],
+    "programs": [
+      "Integrated M.Tech"
+    ],
+    "exam": "Institute admission process",
+    "apply": "https://www.iiitb.ac.in/admissions",
+    "source": "https://www.iiitb.ac.in/",
+    "notes": "Included as a Bengaluru option; 2027 undergraduate admission dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "VIT",
+    "city": "Vellore / Chennai / Amaravati / Bhopal",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "B.Tech"
+    ],
+    "exam": "VITEEE",
+    "apply": "https://viteee.vit.ac.in/",
+    "source": "https://www.vit.ac.in/",
+    "notes": "Official site currently publishes the 2026 VITEEE cycle; 2027 dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "SRM Institute of Science and Technology",
+    "city": "Chennai / other campuses",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.Tech"
+    ],
+    "exam": "SRMJEEE",
+    "apply": "https://www.srmist.edu.in/admission-india/",
+    "source": "https://www.srmist.edu.in/",
+    "notes": "2027 application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Amrita Vishwa Vidyapeetham",
+    "city": "Multiple campuses",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.Tech"
+    ],
+    "exam": "AEEE",
+    "apply": "https://www.amrita.edu/admissions/",
+    "source": "https://www.amrita.edu/",
+    "notes": "2027 application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "KIIT",
+    "city": "Bhubaneswar",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.Tech"
+    ],
+    "exam": "KIITEE",
+    "apply": "https://kiit.ac.in/admission/",
+    "source": "https://kiit.ac.in/",
+    "notes": "2027 application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Shiv Nadar University",
+    "city": "Greater Noida",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Tech",
+      "B.Sc"
+    ],
+    "exam": "University admission process",
+    "apply": "https://snu.edu.in/admissions/",
+    "source": "https://snu.edu.in/",
+    "notes": "2027 application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Ashoka University",
+    "city": "Sonipat",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "Undergraduate programmes"
+    ],
+    "exam": "University admissions process",
+    "apply": "https://www.ashoka.edu.in/admissions/",
+    "source": "https://www.ashoka.edu.in/",
+    "notes": "2027 application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "FLAME University",
+    "city": "Pune",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "Undergraduate programmes"
+    ],
+    "exam": "FLAME admissions process",
+    "apply": "https://www.flame.edu.in/admissions/",
+    "source": "https://www.flame.edu.in/",
+    "notes": "2027 application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Krea University",
+    "city": "Sri City",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "Undergraduate programmes"
+    ],
+    "exam": "Krea admissions process",
+    "apply": "https://krea.edu.in/admissions/",
+    "source": "https://krea.edu.in/",
+    "notes": "2027 application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "Symbiosis International University",
+    "city": "Pune / multiple campuses",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Tech",
+      "B.Sc",
+      "BCA"
+    ],
+    "exam": "Programme-specific Symbiosis entrance routes",
+    "apply": "https://www.siu.edu.in/admissions.php",
+    "source": "https://www.siu.edu.in/",
+    "notes": "2027 application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "NMIMS",
+    "city": "Mumbai / multiple campuses",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "B.Tech",
+      "B.Sc"
+    ],
+    "exam": "NMIMS admission process",
+    "apply": "https://www.nmims.edu/admissions/",
+    "source": "https://www.nmims.edu/",
+    "notes": "2027 application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "IISER Pune",
+    "city": "Pune",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "BS-MS"
+    ],
+    "exam": "IAT",
+    "apply": "https://www.iiseradmission.in/",
+    "source": "https://www.iiseradmission.in/",
+    "notes": "2027 IAT/application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "IISER Kolkata",
+    "city": "Kolkata",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "BS-MS"
+    ],
+    "exam": "IAT",
+    "apply": "https://www.iiseradmission.in/",
+    "source": "https://www.iiseradmission.in/",
+    "notes": "2027 IAT/application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "IISER Mohali",
+    "city": "Mohali",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "BS-MS"
+    ],
+    "exam": "IAT",
+    "apply": "https://www.iiseradmission.in/",
+    "source": "https://www.iiseradmission.in/",
+    "notes": "2027 IAT/application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "IISER Bhopal",
+    "city": "Bhopal",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "BS-MS",
+      "BS",
+      "B.Tech"
+    ],
+    "exam": "IAT",
+    "apply": "https://www.iiseradmission.in/",
+    "source": "https://www.iiseradmission.in/",
+    "notes": "2027 IAT/application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "IISER Thiruvananthapuram",
+    "city": "Thiruvananthapuram",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "BS-MS"
+    ],
+    "exam": "IAT",
+    "apply": "https://www.iiseradmission.in/",
+    "source": "https://www.iiseradmission.in/",
+    "notes": "2027 IAT/application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "IISER Tirupati",
+    "city": "Tirupati",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "BS-MS"
+    ],
+    "exam": "IAT",
+    "apply": "https://www.iiseradmission.in/",
+    "source": "https://www.iiseradmission.in/",
+    "notes": "2027 IAT/application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "IISER Berhampur",
+    "city": "Berhampur",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "BS-MS"
+    ],
+    "exam": "IAT",
+    "apply": "https://www.iiseradmission.in/",
+    "source": "https://www.iiseradmission.in/",
+    "notes": "2027 IAT/application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "IISERs — national tracker",
+    "city": "Multiple campuses",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "BS-MS",
+      "BS",
+      "B.Tech"
+    ],
+    "exam": "IAT",
+    "apply": "https://www.iiseradmission.in/",
+    "source": "https://www.iiseradmission.in/",
+    "notes": "National IISER admissions tracker; 2027 IAT/application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "NISER Bhubaneswar",
+    "city": "Bhubaneswar",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "5-year Integrated M.Sc."
+    ],
+    "exam": "NEST",
+    "apply": "https://www.niser.ac.in/",
+    "source": "https://www.niser.ac.in/",
+    "notes": "2027 NEST/application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "UM-DAE CEBS Mumbai",
+    "city": "Mumbai",
+    "category": "Outside Bengaluru",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "5-year Integrated M.Sc."
+    ],
+    "exam": "NEST",
+    "apply": "https://www.cbs.ac.in/",
+    "source": "https://www.nestexam.in/",
+    "notes": "2027 NEST/application dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "JEE Main 2027",
+    "city": "National",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM"
+    ],
+    "programs": [
+      "B.E./B.Tech"
+    ],
+    "exam": "JEE Main",
+    "apply": "https://jeemain.nta.nic.in/",
+    "source": "https://jeemain.nta.nic.in/",
+    "notes": "2027 application dates not officially announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "KCET 2027 / KEA",
+    "city": "Karnataka",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "Engineering / relevant UG routes"
+    ],
+    "exam": "KCET",
+    "apply": "https://cetonline.karnataka.gov.in/",
+    "source": "https://cetonline.karnataka.gov.in/",
+    "notes": "2027 application dates not officially announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "COMEDK UGET 2027",
+    "city": "Karnataka",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E./B.Tech"
+    ],
+    "exam": "COMEDK UGET",
+    "apply": "https://www.comedk.org/UGET",
+    "source": "https://www.comedk.org/UGET",
+    "notes": "Official site currently publishes the 2026 cycle; 2027 dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "BITSAT 2027",
+    "city": "National",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.E.",
+      "M.Sc.",
+      "B.Pharm."
+    ],
+    "exam": "BITSAT",
+    "apply": "https://www.bitsadmission.com/",
+    "source": "https://www.bitsadmission.com/",
+    "notes": "2027 application dates not officially announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "IISER Aptitude Test (IAT) 2027",
+    "city": "National",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "BS-MS / BS / B.Tech where applicable"
+    ],
+    "exam": "IAT",
+    "apply": "https://www.iiseradmission.in/",
+    "source": "https://www.iiseradmission.in/",
+    "notes": "2027 application dates not officially announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "NEST 2027",
+    "city": "National",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "5-year Integrated M.Sc."
+    ],
+    "exam": "NEST",
+    "apply": "https://www.nestexam.in/",
+    "source": "https://www.nestexam.in/",
+    "notes": "2027 application dates not officially announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "VITEEE 2027",
+    "city": "National",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "programs": [
+      "B.Tech"
+    ],
+    "exam": "VITEEE",
+    "apply": "https://viteee.vit.ac.in/",
+    "source": "https://viteee.vit.ac.in/",
+    "notes": "Official site currently publishes the 2026 cycle; 2027 dates are not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "MET 2027",
+    "city": "National",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.Tech",
+      "relevant MAHE UG programmes"
+    ],
+    "exam": "MET",
+    "apply": "https://www.manipal.edu/mu/admission/undergraduate-programs/engineering.html",
+    "source": "https://www.manipal.edu/",
+    "notes": "2027 application dates not officially announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "SRMJEEE 2027",
+    "city": "National",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.Tech"
+    ],
+    "exam": "SRMJEEE",
+    "apply": "https://www.srmist.edu.in/admission-india/",
+    "source": "https://www.srmist.edu.in/",
+    "notes": "2027 application dates not officially announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "AEEE 2027",
+    "city": "National",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.Tech"
+    ],
+    "exam": "AEEE",
+    "apply": "https://www.amrita.edu/admissions/",
+    "source": "https://www.amrita.edu/",
+    "notes": "2027 application dates not officially announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "KIITEE 2027",
+    "city": "National",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "programs": [
+      "B.Tech"
+    ],
+    "exam": "KIITEE",
+    "apply": "https://kiit.ac.in/admission/",
+    "source": "https://kiit.ac.in/",
+    "notes": "2027 application dates not officially announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "UGEE 2027",
+    "city": "National",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [
+      "PCM"
+    ],
+    "programs": [
+      "B.Tech"
+    ],
+    "exam": "UGEE",
+    "apply": "https://ugadmissions.iiit.ac.in/",
+    "source": "https://ugadmissions.iiit.ac.in/",
+    "notes": "2027 application dates not officially announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "PESSAT / PESU admissions tracker",
+    "city": "Bengaluru",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "Relevant UG programmes"
+    ],
+    "exam": "PES University admission process",
+    "apply": "https://admissions.pes.edu/registration/",
+    "source": "https://pes.edu/",
+    "notes": "PESSAT is not used for PES B.Tech; this entry is retained only as a university-process watch item. Verify the exact programme route before applying.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "JAIN Entrance / UG admissions",
+    "city": "Bengaluru",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "Relevant UG programmes"
+    ],
+    "exam": "JAIN University admission process",
+    "apply": "https://www.jainuniversity.ac.in/admissions/",
+    "source": "https://www.jainuniversity.ac.in/",
+    "notes": "2027 university-specific entrance/application dates not announced.",
+    "lastVerified": "2026-09-22"
+  },
+  {
+    "name": "RV University selection process",
+    "city": "Bengaluru",
+    "category": "Entrance Exam",
+    "cycle": "2027",
+    "status": "WATCH",
+    "streams": [],
+    "programs": [
+      "Relevant UG programmes"
+    ],
+    "exam": "RV University selection process",
+    "apply": "https://rvu.edu.in/admissions/",
+    "source": "https://rvu.edu.in/admissions/",
+    "notes": "2027 university-specific application dates not announced.",
+    "lastVerified": "2026-09-22"
+  }
 ];
-const state={tab:"Everything"},$=id=>document.getElementById(id);
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-function render(){
- const q=$("search").value.trim().toLowerCase(),year=$("year").value,stream=$("stream").value,status=$("status").value;
- const rows=DATA.filter(x=>{
-  const text=[x.name,...x.programmes,x.city,x.category,x.notes].join(" ").toLowerCase();
-  const tabOK=state.tab==="Everything"||(state.tab==="Entrance Exam"?x.category==="Entrance Exam":x.city===state.tab);
-  const streamOK=stream==="all"||!x.streams||x.streams.length===0||x.streams.includes(stream)||x.streams.includes("PCMB");
-  return(!q||text.includes(q))&&(year==="all"||x.year===year)&&(status==="all"||x.status===status)&&tabOK&&streamOK;
- });
- $("count").textContent=`${rows.length} ${rows.length===1?"result":"results"} · ${DATA.length} tracked`;
- if(!rows.length){$("cards").innerHTML='<div class="empty"><strong>No matches.</strong><br>Try removing a filter.</div>';return;}
- $("cards").innerHTML=rows.map(x=>`<article class="card"><div class="card-top"><span class="badge ${esc(x.status)}">${esc(x.status)}</span><span class="year">${esc(x.year)}</span></div><h3>${esc(x.name)}</h3><p class="programmes">${x.programmes.map(esc).join(" · ")}</p><div class="meta"><span class="chip">${esc(x.city)}</span><span class="chip">${esc(x.category)}</span></div><p class="notes">${esc(x.notes||"Check the official source for updates.")}</p><div class="actions">${x.application?`<a class="btn primary" href="${esc(x.application)}" target="_blank" rel="noopener noreferrer">Official application ↗</a>`:'<span class="btn disabled" aria-disabled="true">Application link pending</span>'}${x.source?`<a class="btn" href="${esc(x.source)}" target="_blank" rel="noopener noreferrer">Official source ↗</a>`:""}</div></article>`).join("");
+
+const state = {query:"", year:"all", stream:"all", status:"all", tab:"Everything"};
+
+const $ = s => document.querySelector(s);
+const grid = $("#grid");
+const count = $("#count");
+
+function safeUrl(value){
+  try{
+    const u = new URL(value);
+    return (u.protocol === "https:" || u.protocol === "http:") ? u.href : "#";
+  }catch{return "#";}
 }
-["search","year","stream","status"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",render));
-document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>{state.tab=btn.dataset.tab;document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t===btn));render();}));
-render();
+function esc(v){
+  return String(v ?? "").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+}
+function matches(item){
+  const q = state.query.trim().toLowerCase();
+  const hay = [item.name,item.city,item.category,item.cycle,item.status,item.exam,...(item.programs||[]),...(item.streams||[]),item.notes].join(" ").toLowerCase();
+  if(q && !hay.includes(q)) return false;
+  if(state.year !== "all" && item.cycle !== state.year) return false;
+  if(state.status !== "all" && item.status !== state.status) return false;
+  if(state.stream !== "all" && item.streams.length && !item.streams.includes(state.stream)) return false;
+  if(state.tab === "Bengaluru" && item.category !== "Bengaluru") return false;
+  if(state.tab === "Outside Bengaluru" && item.category !== "Outside Bengaluru") return false;
+  if(state.tab === "Entrance Exams" && item.category !== "Entrance Exam") return false;
+  return true;
+}
+function card(item){
+  const apply = safeUrl(item.apply), source = safeUrl(item.source);
+  const tags = (item.programs||[]).map(x=>`<span class="tag">${esc(x)}</span>`).join("");
+  const streamTags = (item.streams||[]).map(x=>`<span class="tag">${esc(x)}</span>`).join("");
+  const exam = item.exam ? `<div class="exam"><b>Route:</b> ${esc(item.exam)}</div>` : "";
+  const statusClass = item.status === "OPEN" ? "open" : "watch";
+  return `<article class="card">
+    <div class="topline"><div class="name">${esc(item.name)}</div><span class="status ${statusClass}">${esc(item.status)}</span></div>
+    <div class="place">${esc(item.city)} · ${esc(item.cycle)}</div>
+    <div class="tags">${tags}${streamTags}</div>
+    ${exam}
+    <div class="notes">${esc(item.notes)}</div>
+    <div class="verified">Verified: ${esc(item.lastVerified)}</div>
+    <div class="actions">
+      <a class="btn primary" href="${apply}" target="_blank" rel="noopener noreferrer">Official Application ↗</a>
+      <a class="btn" href="${source}" target="_blank" rel="noopener noreferrer">Official Source ↗</a>
+    </div>
+  </article>`;
+}
+function render(){
+  const filtered = DATA.filter(matches);
+  count.textContent = `${filtered.length} ${filtered.length === 1 ? "entry" : "entries"}`;
+  grid.innerHTML = filtered.length ? filtered.map(card).join("") :
+    `<div class="empty"><strong>No matches.</strong><br>Try removing a filter or changing your search.</div>`;
+}
+function bind(){
+  $("#search").addEventListener("input",e=>{state.query=e.target.value;render()});
+  $("#year").addEventListener("change",e=>{state.year=e.target.value;render()});
+  $("#stream").addEventListener("change",e=>{state.stream=e.target.value;render()});
+  $("#status").addEventListener("change",e=>{state.status=e.target.value;render()});
+  document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+    t.classList.add("active"); state.tab=t.dataset.tab; render();
+  }));
+}
+bind(); render();
+
 </script>
 </body>
 </html>
