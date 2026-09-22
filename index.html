@@ -1713,6 +1713,7 @@ async function setupNotifications(){
     window.OneSignalDeferred.push(async function(OneSignal){
       await OneSignal.init({
         appId: ONESIGNAL_APP_ID,
+        safari_web_id: "web.onesignal.auto.0f4ef0fc-d020-4184-9066-253532c318fc",
         serviceWorkerPath: "OneSignalSDKWorker.js",
         serviceWorkerParam: { scope: "/Admission-Radar/" },
         notifyButton: { enable: false }
