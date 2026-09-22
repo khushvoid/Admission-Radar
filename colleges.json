@@ -1,0 +1,232 @@
+[
+  {
+    "name": "PES University",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "programs": [
+      "B.Tech"
+    ],
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "cycle": "2027",
+    "status": "OPEN",
+    "lastVerified": "2026-09-22",
+    "source": "https://admissions.pes.edu/registration/",
+    "apply": "https://admissions.pes.edu/registration/",
+    "notes": "PESU's official portal currently shows Admissions 2027 registration and B.Tech registration using JEE Main 2027 and/or KCET 2027.",
+    "official": "https://pes.edu/"
+  },
+  {
+    "name": "PES University \u2014 other UG programmes",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "programs": [
+      "B.Sc",
+      "B.Pharm",
+      "BCA",
+      "B.Des",
+      "BBA",
+      "B.Com",
+      "B.Sc. Hons"
+    ],
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "cycle": "2027",
+    "status": "OPEN",
+    "lastVerified": "2026-09-22",
+    "source": "https://admissions.pes.edu/registration/",
+    "apply": "https://admissions.pes.edu/registration/",
+    "notes": "The official 2027 registration portal lists multiple UG programmes. Entrance/eligibility varies by programme.",
+    "official": "https://pes.edu/"
+  },
+  {
+    "name": "Manipal Academy of Higher Education \u2014 Bengaluru",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "programs": [
+      "B.Tech",
+      "B.Pharm",
+      "BBA",
+      "B.Des"
+    ],
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "cycle": "2027",
+    "status": "WATCH",
+    "lastVerified": "2026-09-22",
+    "source": "https://www.manipal.edu/mu/admission/indian-students/how-to-apply.html",
+    "apply": "https://www.manipal.edu/mu/admission/indian-students/how-to-apply.html",
+    "notes": "Official admissions page says MET is used for B.Tech and lists UG programmes. 2027 dates should be confirmed when MAHE publishes the new cycle.",
+    "official": "https://www.manipal.edu/"
+  },
+  {
+    "name": "Ramaiah Institute of Technology",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "programs": [
+      "B.E."
+    ],
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "cycle": "2027",
+    "status": "WATCH",
+    "lastVerified": "2026-09-22",
+    "source": "https://www.msrit.edu/admissions.html",
+    "apply": "https://www.msrit.edu/admissions.html",
+    "notes": "Official admissions page lists B.E. programmes and says admission uses KEA / COMEDK. Monitor the 2027 notice/application release.",
+    "official": "https://www.msrit.edu/"
+  },
+  {
+    "name": "CHRIST (Deemed to be University)",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "programs": [
+      "B.Tech",
+      "B.Sc"
+    ],
+    "streams": [
+      "PCM",
+      "PCMB",
+      "PCB"
+    ],
+    "cycle": "2027",
+    "status": "WATCH",
+    "lastVerified": "2026-09-22",
+    "source": "https://www.christuniversity.in/",
+    "apply": "https://appstat.christuniversity.in/",
+    "notes": "CHRIST publishes programme-level application windows. Verify the specific 2027 programme page before applying.",
+    "official": "https://www.christuniversity.in/"
+  },
+  {
+    "name": "Indian Institute of Science (IISc) Bengaluru",
+    "city": "Bengaluru",
+    "category": "Bengaluru",
+    "programs": [
+      "BS (Research)"
+    ],
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "cycle": "2027",
+    "status": "WATCH",
+    "lastVerified": "2026-09-22",
+    "source": "https://bs-ug.iisc.ac.in/admissions/selection-process",
+    "apply": "https://bs-ug.iisc.ac.in/",
+    "notes": "The latest official cycle requires Physics, Chemistry and Mathematics and uses national-level channels such as JEE Advanced/IAT. 2027 dates are not yet verified here.",
+    "official": "https://iisc.ac.in/"
+  },
+  {
+    "name": "BITS Pilani",
+    "city": "Pilani / Goa / Hyderabad",
+    "category": "Outside Bengaluru",
+    "programs": [
+      "B.E.",
+      "M.Sc.",
+      "B.Pharm."
+    ],
+    "streams": [
+      "PCM",
+      "PCMB",
+      "PCB"
+    ],
+    "cycle": "2027",
+    "status": "WATCH",
+    "lastVerified": "2026-09-22",
+    "source": "https://www.bitsadmission.com/",
+    "apply": "https://admissions.bits-pilani.ac.in/",
+    "notes": "The official site says the 2026-27 cycle is closed; BITSAT is the primary pathway for First Degree programmes. Watch for the 2027 BITSAT application release.",
+    "official": "https://www.bitsadmission.com/"
+  },
+  {
+    "name": "IISERs",
+    "city": "India",
+    "category": "Outside Bengaluru",
+    "programs": [
+      "BS-MS",
+      "BS",
+      "B.Tech"
+    ],
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "cycle": "2027",
+    "status": "WATCH",
+    "lastVerified": "2026-09-22",
+    "source": "https://info.iiseradmission.in/",
+    "apply": "https://info.iiseradmission.in/",
+    "notes": "The official admissions site covers IISER BS-MS/BS/B.Tech pathways and IAT. 2027 schedule is not yet verified.",
+    "official": "https://www.iiseradmission.in/"
+  },
+  {
+    "name": "NISER / UM-DAE CEBS",
+    "city": "Bhubaneswar / Mumbai",
+    "category": "Outside Bengaluru",
+    "programs": [
+      "5-year Integrated M.Sc."
+    ],
+    "streams": [
+      "PCM",
+      "PCB",
+      "PCMB"
+    ],
+    "cycle": "2027",
+    "status": "WATCH",
+    "lastVerified": "2026-09-22",
+    "source": "https://www.nestexam.in/",
+    "apply": "https://www.nestexam.in/",
+    "notes": "NEST is the common entrance test for the 5-year Integrated M.Sc. programmes. 2027 dates are not yet verified.",
+    "official": "https://www.nestexam.in/"
+  },
+  {
+    "name": "COMEDK UGET",
+    "city": "Karnataka",
+    "category": "Entrance Exam",
+    "programs": [
+      "B.E./B.Tech via participating colleges"
+    ],
+    "streams": [
+      "PCM",
+      "PCMB"
+    ],
+    "cycle": "2027",
+    "status": "WATCH",
+    "lastVerified": "2026-09-22",
+    "source": "https://www.comedk.org/",
+    "apply": "https://www.comedk.org/",
+    "notes": "COMEDK publishes the UGET schedule and application window. Use the official portal for the 2027 notification.",
+    "official": "https://www.comedk.org/"
+  },
+  {
+    "name": "KCET / KEA",
+    "city": "Karnataka",
+    "category": "Entrance Exam",
+    "programs": [
+      "Engineering and other Karnataka admissions"
+    ],
+    "streams": [
+      "PCM",
+      "PCMB",
+      "PCB"
+    ],
+    "cycle": "2027",
+    "status": "WATCH",
+    "lastVerified": "2026-09-22",
+    "source": "https://cetonline.karnataka.gov.in/kea/",
+    "apply": "https://cetonline.karnataka.gov.in/kea/",
+    "notes": "KEA controls the Karnataka common entrance process. 2027 application dates should be taken only from the official KEA portal.",
+    "official": "https://cetonline.karnataka.gov.in/kea/"
+  }
+]
