@@ -1,0 +1,41 @@
+name: Admission Radar Monitor
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: admission-radar-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run official-source monitor
+        run: python monitor.py
+
+      - name: Commit updated embedded DATA
+        run: |
+          git config user.name "admission-radar-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No monitoring changes detected."
+            exit 0
+          fi
+          git commit -m "Update admission monitoring snapshot"
+          git push
