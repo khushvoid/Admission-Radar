@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b12">
+<title>Admission Radar — 2027/2028</title>
+<style>
+:root{color-scheme:dark;--bg:#080b12;--panel:#111824;--line:#293548;--text:#f4f7fb;--muted:#a1aec0;--mint:#8bf0c8;--amber:#ffd17b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0,#1b3040 0,transparent 40%),var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{width:min(1160px,calc(100% - 32px));margin:auto}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}.brand{font-weight:900;letter-spacing:-.04em}.brand span,.hero em{color:var(--mint)}.verified{color:var(--muted);font-size:.82rem}.hero{padding:62px 0 34px}.eyebrow{color:var(--mint);font-size:.75rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase}.hero h1{font-size:clamp(2.8rem,8vw,6.5rem);line-height:.92;letter-spacing:-.075em;margin:18px 0}.hero em{font-style:normal}.hero p{color:var(--muted);max-width:660px;font-size:1.05rem}.filters{display:grid;grid-template-columns:2fr repeat(3,minmax(120px,1fr));gap:12px;background:#101622e8;border:1px solid var(--line);border-radius:20px;padding:17px}input,select{width:100%;background:#090f19;color:var(--text);border:1px solid #303c50;border-radius:11px;padding:13px;font:inherit;min-width:0}input:focus,select:focus{outline:2px solid var(--mint)}.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 28px}.tab{border:1px solid var(--line);background:transparent;color:var(--muted);padding:10px 15px;border-radius:999px;font:inherit;font-weight:700;cursor:pointer}.tab.active{background:var(--mint);color:#082017;border-color:var(--mint)}.results-head{display:flex;justify-content:space-between;align-items:center;margin:20px 0}.results-head h2{margin:0;font-size:1.25rem}.count{color:var(--muted);font-size:.9rem}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:linear-gradient(145deg,#151f2e,var(--panel));border:1px solid var(--line);border-radius:19px;padding:20px;display:flex;flex-direction:column;min-height:260px}.card-top{display:flex;justify-content:space-between;align-items:center}.badge{font-size:.7rem;font-weight:900;letter-spacing:.1em;padding:6px 9px;border-radius:7px}.OPEN{background:#143a2e;color:var(--mint)}.WATCH{background:#3b2c15;color:var(--amber)}.year{color:var(--muted);font-size:.82rem}.card h3{font-size:1.3rem;line-height:1.2;letter-spacing:-.03em;margin:19px 0 7px}.programmes,.notes{color:var(--muted);margin:0 0 15px}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;margin-bottom:15px}.chip{font-size:.75rem;background:#202b3b;color:#d0d9e6;border-radius:7px;padding:5px 8px}.actions{display:flex;gap:8px}.btn{flex:1;text-align:center;text-decoration:none;border:1px solid #3a4960;border-radius:10px;padding:10px 8px;font-size:.82rem;font-weight:800}.btn.primary{background:var(--mint);color:#082017;border-color:var(--mint)}.btn.disabled{opacity:.45;pointer-events:none}.empty{grid-column:1/-1;text-align:center;padding:38px;border:1px dashed #354157;border-radius:18px;color:var(--muted)}.info{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:42px 0 25px}.info article{background:#0e1420;border:1px solid var(--line);border-radius:17px;padding:21px}.info h3{margin:0 0 8px}.info p{margin:0;color:var(--muted)}footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:24px 0 38px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+@media(max-width:850px){.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.filters .search{grid-column:1/-1}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.wrap{width:calc(100% - 24px)}.top{align-items:flex-start;flex-direction:column}.hero{padding:44px 0 28px}.filters,.cards,.info{grid-template-columns:1fr}.filters .search{grid-column:auto}.card{min-height:0}.results-head{align-items:flex-start;gap:8px;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand">◉ ADMISSION <span>RADAR</span></div><div class="verified">DATA LAST VERIFIED · <strong>22 SEP 2026</strong></div></header>
+<main>
+<section class="hero"><div class="eyebrow">Your 2027 / 2028 admissions dashboard</div><h1>DON’T MISS<br><em>THE FORM.</em></h1><p>Track application windows, entrance exams, and official admission portals in one place. Filter the list to find what matters to you.</p></section>
+<section aria-label="Admissions filters">
+<div class="filters">
+<input class="search" id="search" type="search" placeholder="Search colleges, programmes, cities…" aria-label="Search">
+<select id="year" aria-label="Year"><option value="all">All years</option><option value="2027">2027</option><option value="2028">2028</option></select>
+<select id="stream" aria-label="Stream"><option value="all">All science</option><option value="PCM">PCM</option><option value="PCB">PCB</option><option value="PCMB">PCMB</option></select>
+<select id="status" aria-label="Status"><option value="all">All statuses</option><option value="OPEN">OPEN</option><option value="WATCH">WATCH</option></select>
+</div>
+<nav class="tabs" aria-label="Category tabs"><button class="tab active" data-tab="Everything">Everything</button><button class="tab" data-tab="Bengaluru">Bengaluru</button><button class="tab" data-tab="Outside Bengaluru">Outside Bengaluru</button><button class="tab" data-tab="Entrance Exam">Entrance exams</button></nav>
+</section>
+<div class="results-head"><h2>Admissions radar</h2><div class="count" id="count" aria-live="polite"></div></div>
+<section class="cards" id="cards" aria-live="polite"></section>
+<section class="info">
+<article><h3><span style="color:var(--mint)">● OPEN</span> — Application available</h3><p>The tracker indicates an application or registration is open. Confirm deadlines, eligibility, and requirements on the official portal.</p></article>
+<article><h3><span style="color:var(--amber)">● WATCH</span> — Monitor updates</h3><p>Watch the official source for notifications, dates, and application links. WATCH does not mean applications are open.</p></article>
+</section>
+</main>
+<footer><span>Admission Radar · 2027/2028</span><span>Always confirm details with official sources.</span></footer>
+</div>
+<script>
+"use strict";
+// Embedded data: the college cards do not use fetch() or external JSON.
+const DATA = [
+{id:"pes-btech",name:"PES University",programmes:["B.Tech"],year:"2027",status:"OPEN",city:"Bengaluru",category:"College",streams:["PCM","PCMB"],application:"https://admissions.pes.edu/registration/",source:"https://pes.edu/",notes:"Official portal shows Admissions 2027 and B.Tech registration using JEE Main 2027/KCET 2027."},
+{id:"pes-other",name:"PES University",programmes:["B.Sc","B.Pharm","BCA","B.Des","BBA","B.Com","B.Sc. Hons"],year:"2027",status:"OPEN",city:"Bengaluru",category:"College",streams:["PCM","PCB","PCMB"],application:"https://admissions.pes.edu/registration/",source:"https://pes.edu/",notes:"Check the official portal for programme-specific eligibility and dates."},
+{id:"mahe",name:"MAHE Bengaluru",programmes:["B.Tech","B.Pharm","BBA","B.Des"],year:"2027",status:"WATCH",city:"Bengaluru",category:"College",streams:["PCM","PCB","PCMB"],application:"",source:"https://manipal.edu/",notes:"Watch the official admissions website for Bengaluru programme announcements."},
+{id:"rit",name:"Ramaiah Institute of Technology",programmes:["B.E."],year:"2027",status:"WATCH",city:"Bengaluru",category:"College",streams:["PCM","PCMB"],application:"",source:"https://www.msrit.edu/",notes:"Watch official institute and relevant entrance/counselling updates."},
+{id:"christ",name:"CHRIST University",programmes:["B.Tech","B.Sc"],year:"2027",status:"WATCH",city:"Bengaluru",category:"College",streams:["PCM","PCB","PCMB"],application:"",source:"https://christuniversity.in/",notes:"Monitor the official admissions site for programme-specific dates."},
+{id:"iisc",name:"IISc Bengaluru",programmes:["BS (Research)"],year:"2027",status:"WATCH",city:"Bengaluru",category:"College",streams:["PCM","PCMB"],application:"",source:"https://www.iisc.ac.in/",notes:"Watch official IISc admissions announcements and eligibility details."},
+{id:"bits",name:"BITS Pilani",programmes:["B.E.","M.Sc.","B.Pharm."],year:"2027",status:"WATCH",city:"Outside Bengaluru",category:"College",streams:["PCM","PCB","PCMB"],application:"",source:"https://www.bitsadmission.com/",notes:"Monitor the official BITS admissions portal for 2027 updates."},
+{id:"iisers",name:"IISERs",programmes:["BS-MS","BS","B.Tech"],year:"2027",status:"WATCH",city:"Outside Bengaluru",category:"College",streams:["PCM","PCB","PCMB"],application:"",source:"https://www.iiseradmission.in/",notes:"Watch the official IISER admissions portal for the 2027 process."},
+{id:"niser-cebs",name:"NISER / UM-DAE CEBS",programmes:["5-year Integrated M.Sc."],year:"2027",status:"WATCH",city:"Outside Bengaluru",category:"College",streams:["PCM","PCB","PCMB"],application:"",source:"https://www.niser.ac.in/",notes:"Monitor official NISER and CEBS admission announcements."},
+{id:"comedk",name:"COMEDK UGET",programmes:["Entrance examination"],year:"2027",status:"WATCH",city:"Outside Bengaluru",category:"Entrance Exam",streams:["PCM","PCMB"],application:"",source:"https://www.comedk.org/",notes:"Watch for the 2027 examination notification, schedule, and application window."},
+{id:"kcet",name:"KCET / KEA",programmes:["Entrance examination"],year:"2027",status:"WATCH",city:"Bengaluru",category:"Entrance Exam",streams:["PCM","PCB","PCMB"],application:"",source:"https://cetonline.karnataka.gov.in/kea/",notes:"Watch for the 2027 KEA notification, eligibility, and schedule."}
+];
+const state={tab:"Everything"},$=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function render(){
+ const q=$("search").value.trim().toLowerCase(),year=$("year").value,stream=$("stream").value,status=$("status").value;
+ const rows=DATA.filter(x=>{
+  const text=[x.name,...x.programmes,x.city,x.category,x.notes].join(" ").toLowerCase();
+  const tabOK=state.tab==="Everything"||(state.tab==="Entrance Exam"?x.category==="Entrance Exam":x.city===state.tab);
+  const streamOK=stream==="all"||!x.streams||x.streams.length===0||x.streams.includes(stream)||x.streams.includes("PCMB");
+  return(!q||text.includes(q))&&(year==="all"||x.year===year)&&(status==="all"||x.status===status)&&tabOK&&streamOK;
+ });
+ $("count").textContent=`${rows.length} ${rows.length===1?"result":"results"} · ${DATA.length} tracked`;
+ if(!rows.length){$("cards").innerHTML='<div class="empty"><strong>No matches.</strong><br>Try removing a filter.</div>';return;}
+ $("cards").innerHTML=rows.map(x=>`<article class="card"><div class="card-top"><span class="badge ${esc(x.status)}">${esc(x.status)}</span><span class="year">${esc(x.year)}</span></div><h3>${esc(x.name)}</h3><p class="programmes">${x.programmes.map(esc).join(" · ")}</p><div class="meta"><span class="chip">${esc(x.city)}</span><span class="chip">${esc(x.category)}</span></div><p class="notes">${esc(x.notes||"Check the official source for updates.")}</p><div class="actions">${x.application?`<a class="btn primary" href="${esc(x.application)}" target="_blank" rel="noopener noreferrer">Official application ↗</a>`:'<span class="btn disabled" aria-disabled="true">Application link pending</span>'}${x.source?`<a class="btn" href="${esc(x.source)}" target="_blank" rel="noopener noreferrer">Official source ↗</a>`:""}</div></article>`).join("");
+}
+["search","year","stream","status"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",render));
+document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>{state.tab=btn.dataset.tab;document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t===btn));render();}));
+render();
+</script>
+</body>
+</html>
