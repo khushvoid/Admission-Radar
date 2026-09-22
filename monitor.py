@@ -87,17 +87,35 @@ def has_open_signal(text: str) -> bool:
     return any(re.search(p, text, flags=re.I) for p in OPEN_PATTERNS)
 
 
-def should_open(row: dict, text: str) -> bool:
-    if row.get("cycle") != "2027" or row.get("status") != "WATCH":
-        return False
+def has_explicit_2027_open(text: str) -> bool:
+    # Require a tight, explicit 2027 opening statement. This intentionally
+    # ignores generic "apply/open" language on pages that are still showing
+    # the 2026 cycle.
+    strong_patterns = [
+        r"\b2027\b.{0,80}\b(?:applications?|registration|registrations|admissions?)\b.{0,80}\b(?:now\s+)?open\b",
+        r"\b(?:applications?|registration|registrations|admissions?)\b.{0,80}\b2027\b.{0,80}\b(?:now\s+)?open\b",
+        r"\b(?:apply|register)\s+now\b.{0,100}\b2027\b",
+        r"\b2027\b.{0,100}\b(?:apply|register)\s+now\b",
+    ]
+    return any(re.search(p, text, flags=re.I | re.S) for p in strong_patterns)
 
-    # Avoid false positives caused by an unrelated "2027" and a generic
-    # "applications are open" phrase appearing far apart on a large page.
-    for match in re.finditer(r"\b2027\b", text, flags=re.I):
-        window = text[max(0, match.start() - 450): min(len(text), match.end() + 450)]
-        if has_process_signal(window) and has_open_signal(window):
-            return True
-    return False
+
+def should_open(row: dict, text: str) -> bool:
+    return (
+        row.get("cycle") == "2027"
+        and row.get("status") == "WATCH"
+        and has_explicit_2027_open(text)
+    )
+
+
+def should_keep_open(row: dict, text: str) -> bool:
+    if row.get("cycle") != "2027" or row.get("status") != "OPEN":
+        return True
+
+    # Existing OPEN rows are re-verified on every run. If the official source
+    # no longer contains an explicit 2027 opening statement, downgrade it to
+    # WATCH instead of trusting stale/manual data.
+    return has_explicit_2027_open(text)
 
 
 def send_push(app_id: str, api_key: str, row: dict) -> None:
@@ -209,7 +227,10 @@ def main() -> int:
             row["httpStatus"] = status_code
             row.pop("monitorError", None)
 
-            if should_open(row, text):
+            if row.get("status") == "OPEN" and not should_keep_open(row, text):
+                row["status"] = "WATCH"
+                print("VERIFY:", row["name"], "OPEN -> WATCH (2027 opening not explicitly verified)")
+            elif should_open(row, text):
                 row["status"] = "OPEN"
                 changes.append({
                     "name": row["name"],
