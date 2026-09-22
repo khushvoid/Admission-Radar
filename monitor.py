@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import html
 import json
+import os
 import re
 import time
 from datetime import datetime, timezone
@@ -31,16 +32,14 @@ YEAR_PATTERNS = [
 ]
 
 OPEN_PATTERNS = [
-    r"\bapplications?\s+(?:are\s+)?(?:now\s+)?open\b",
-    r"\bapplication\s+window\s+(?:is\s+)?open\b",
-    r"\bregistration\s+(?:is\s+)?(?:now\s+)?open\b",
-    r"\bregistrations?\s+(?:are\s+)?(?:now\s+)?open\b",
-    r"\bapply\s+now\b",
-    r"\bregister\s+now\b",
-    r"\bregistration\s+(?:portal|form|link)\b",
-    r"\badmissions?\s+2027\s+(?:is\s+)?open\b",
-    r"\b2027\s+(?:applications?|registration|admissions?)\s+(?:is|are|has been)?\s*(?:now\s+)?open\b",
+    r"\bapplications?\s+(?:for\s+)?2027\s+(?:are\s+)?(?:now\s+)?open\b",
+    r"\b2027\s+(?:applications?|registration|admissions?)\s+(?:are|is|have been|has been)?\s*(?:now\s+)?open\b",
+    r"\bregistration\s+(?:for\s+)?2027\s+(?:is\s+)?(?:now\s+)?open\b",
+    r"\badmissions?\s+2027\s+(?:is|are)?\s*(?:now\s+)?open\b",
+    r"\b2027\b.{0,180}\b(?:apply|application|applications|register|registration|registrations|admission|admissions)\b.{0,180}\b(?:open|apply now|register now)\b",
+    r"\b(?:apply now|register now)\b.{0,180}\b2027\b",
 ]
+
 
 PROCESS_PATTERNS = [
     r"\bapplication\b",
@@ -89,13 +88,50 @@ def has_open_signal(text: str) -> bool:
 
 
 def should_open(row: dict, text: str) -> bool:
-    return (
-        row.get("cycle") == "2027"
-        and row.get("status") == "WATCH"
-        and has_2027_signal(text)
-        and has_process_signal(text)
-        and has_open_signal(text)
+    if row.get("cycle") != "2027" or row.get("status") != "WATCH":
+        return False
+
+    # Avoid false positives caused by an unrelated "2027" and a generic
+    # "applications are open" phrase appearing far apart on a large page.
+    for match in re.finditer(r"\b2027\b", text, flags=re.I):
+        window = text[max(0, match.start() - 450): min(len(text), match.end() + 450)]
+        if has_process_signal(window) and has_open_signal(window):
+            return True
+    return False
+
+
+def send_push(app_id: str, api_key: str, row: dict) -> None:
+    payload = {
+        "app_id": app_id,
+        "target_channel": "push",
+        "name": f"Admission Radar — {row['name']}",
+        "headings": {"en": f"🔔 {row['name']} — 2027 is OPEN"},
+        "contents": {
+            "en": "Official-source monitoring detected an open 2027 application/registration."
+        },
+        "url": row["apply"],
+        "included_segments": ["Subscribed Users"],
+        "web_buttons": [
+            {"id": "apply", "text": "Apply now", "url": row["apply"]},
+            {
+                "id": "radar",
+                "text": "Open Admission Radar",
+                "url": "https://khushvoid.github.io/Admission-Radar/"
+            }
+        ],
+    }
+    body = json.dumps(payload).encode("utf-8")
+    req = Request(
+        "https://api.onesignal.com/notifications",
+        data=body,
+        method="POST",
+        headers={
+            "Authorization": f"Key {api_key}",
+            "Content-Type": "application/json; charset=utf-8",
+        },
     )
+    with urlopen(req, timeout=20) as response:
+        response.read(100_000)
 
 
 def extract_data(source: str) -> tuple[list[dict], tuple[int, int]]:
@@ -152,9 +188,12 @@ def main() -> int:
     validate_rows(rows)
 
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    changes: list[str] = []
+    changes: list[dict] = []
     checked = 0
     failures = 0
+    push_app_id = os.getenv("ONESIGNAL_APP_ID", "").strip()
+    push_api_key = os.getenv("ONESIGNAL_API_KEY", "").strip()
+    push_enabled = bool(push_app_id and push_api_key)
 
     for row in rows:
         # 2028 remains WATCH until its official cycle is actually published.
@@ -172,7 +211,11 @@ def main() -> int:
 
             if should_open(row, text):
                 row["status"] = "OPEN"
-                changes.append(f"{row['name']}: {old} -> OPEN")
+                changes.append({
+                    "name": row["name"],
+                    "apply": row["apply"],
+                    "source": row["source"],
+                })
 
             checked += 1
         except (HTTPError, URLError, TimeoutError, OSError, UnicodeError) as exc:
@@ -192,7 +235,18 @@ def main() -> int:
 
     print(f"Admission Radar monitor: checked={checked}, failures={failures}, changes={len(changes)}")
     for change in changes:
-        print("CHANGE:", change)
+        print("CHANGE:", change["name"], "-> OPEN")
+
+    if changes and push_enabled:
+        for change in changes:
+            try:
+                send_push(push_app_id, push_api_key, change)
+                print("PUSH:", change["name"])
+            except Exception as exc:
+                # A notification failure must never make the admissions monitor fail.
+                print("PUSH ERROR:", change["name"], str(exc)[:240])
+    elif changes:
+        print("PUSH: skipped (ONESIGNAL_APP_ID / ONESIGNAL_API_KEY not configured)")
 
     return 0
 
