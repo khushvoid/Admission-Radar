@@ -140,8 +140,7 @@ const DATA = [
     "notes": "2027 application opening has not been verified on the official site.",
     "lastVerified": "2026-09-22",
     "lastChecked": "2026-11-23",
-    "httpStatus": 200,
-    "monitorError": "HTTP Error 502: Bad Gateway"
+    "httpStatus": 200
   },
   {
     "name": "RV College of Engineering",
@@ -168,7 +167,7 @@ const DATA = [
     "city": "Bengaluru",
     "category": "Bengaluru",
     "cycle": "2027",
-    "status": "OPEN",
+    "status": "WATCH",
     "streams": [
       "PCM",
       "PCMB"
@@ -283,7 +282,8 @@ const DATA = [
     "notes": "2027 application dates not announced.",
     "lastVerified": "2026-09-22",
     "lastChecked": "2026-11-23",
-    "httpStatus": 200
+    "httpStatus": 200,
+    "monitorError": "The read operation timed out"
   },
   {
     "name": "CHRIST University",
@@ -632,7 +632,7 @@ const DATA = [
     "city": "Bengaluru",
     "category": "Bengaluru",
     "cycle": "2027",
-    "status": "WATCH",
+    "status": "OPEN",
     "streams": [],
     "programs": [
       "B.Sc"
@@ -643,7 +643,7 @@ const DATA = [
     "notes": "2027 application dates not announced.",
     "lastVerified": "2026-09-22",
     "lastChecked": "2026-11-23",
-    "monitorError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
+    "httpStatus": 200
   },
   {
     "name": "Kristu Jayanti University",
@@ -806,7 +806,7 @@ const DATA = [
     "city": "Bengaluru",
     "category": "Bengaluru",
     "cycle": "2027",
-    "status": "WATCH",
+    "status": "OPEN",
     "streams": [],
     "programs": [
       "B.Sc"
@@ -817,7 +817,7 @@ const DATA = [
     "notes": "2027 application dates not announced.",
     "lastVerified": "2026-09-22",
     "lastChecked": "2026-11-23",
-    "monitorError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>"
+    "httpStatus": 200
   },
   {
     "name": "BITS Pilani",
@@ -1078,7 +1078,8 @@ const DATA = [
     "notes": "2027 application dates are not announced.",
     "lastVerified": "2026-09-22",
     "lastChecked": "2026-11-23",
-    "httpStatus": 200
+    "httpStatus": 200,
+    "monitorError": "<urlopen error timed out>"
   },
   {
     "name": "NMIMS",
